@@ -8,19 +8,17 @@ import React, { Component } from 'react'
 import { View, StyleSheet, ActivityIndicator} from 'react-native'
 
 type Spinner ={
-    size?:String,
-    children?:any
+    size?:String
 }
 
 export default class index extends Component<Spinner> {
     render() {
-        const {size, children} = this.props;
+        const {size} = this.props;
         return (
             <View style={styles.container}>
                 <View style={styles.spinner}> 
                     <ActivityIndicator size={size || 'large'} />
                 </View>
-                {children}
             </View>
         )
     }
@@ -29,19 +27,20 @@ export default class index extends Component<Spinner> {
 
 const styles = StyleSheet.create({
     container:{
-        position:'relative'
-    },  
-    spinner:{
-        position:'absolute',
         flex:1,
+        position:"absolute",
+        left:0,
         top:0,
         bottom:0,
+        right:0,
+        zIndex:111
+    },  
+    spinner:{
+        flex:1,
         alignItems:'center',
         justifyContent:'center',
-        left:0,
-        right:0,
         backgroundColor:"#ffffff",
-        opacity:.5,
-        zIndex:1
+        borderRadius:10,
+        opacity:.5
     }
 })

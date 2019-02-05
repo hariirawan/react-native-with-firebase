@@ -65,7 +65,7 @@ export default class Login extends Component {
         if(loading){
             return <Spinner size="small"/>
         }
-        return <Button label="Masuk" onPress={this.handleSubmit}/>
+        return null
     }
 
     render() {
@@ -80,6 +80,7 @@ export default class Login extends Component {
                 </View>
             </LinearGradient>
             <View style={styles.form}>
+                {this.renderButton()}
                 <Input 
                     placeholder="Nomor Telepon atau email" 
                     iconName='account' 
@@ -92,13 +93,13 @@ export default class Login extends Component {
                     iconName='fingerprint' 
                     value={fields.password}
                     onChangeText={this.onChangeText.bind(this, "password")}
-                    secureTextEntry={true}/>
+                    secureTextEntry={!isCheck}/>
 
                 <Checkbox 
                     isCheck={isCheck} 
                     onCheck={this.onCheck} />
 
-                {this.renderButton()}
+                <Button label="Masuk" onPress={this.handleSubmit}/>
                 
             </View>
         </View>
